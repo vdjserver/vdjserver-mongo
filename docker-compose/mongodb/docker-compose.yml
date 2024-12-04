@@ -1,0 +1,34 @@
+# VDJServer Docker Orchestration
+
+services:
+    vdjr-mongo:
+        build: ./../../mongodb
+        container_name: vdjr-mongo
+        image: vdjserver/mongo:4
+        user: mongodb:mongodb
+        volumes:
+            - /mnt/data2/mongodb/mongodata:/data/db
+#            - ../../../data/repository/mongodb:/data/db
+        networks:
+            - v3_db
+        command: mongod --noauth
+        healthcheck:
+          test:
+            [
+              "CMD",
+              "mongo",
+              "--quiet",
+              "127.0.0.1/v1airr",
+              "--eval",
+              "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
+            ]
+          interval: 360s
+          timeout: 10s
+          retries: 5
+          start_period: 60s
+          #start_interval: 10s
+
+networks:
+    v3_db:
+        name: v3-db
+        driver: bridge
