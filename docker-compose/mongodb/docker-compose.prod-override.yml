@@ -1,0 +1,6 @@
+# VDJServer Docker Orchestration
+
+services:
+    vdjr-mongo:
+        logging:
+            driver: "syslog"
