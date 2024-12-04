@@ -7,11 +7,13 @@ services:
         image: vdjserver/mongo:4
         user: mongodb:mongodb
         volumes:
-            - /mnt/data2/mongodb/mongodata:/data/db
+            - /vdjZ/database/mongodata:/data/db
 #            - ../../../data/repository/mongodb:/data/db
         networks:
             - v3_db
         command: mongod --noauth
+        ports:
+          - 27017:27017
         healthcheck:
           test:
             [

@@ -1,0 +1,13 @@
+[Unit]
+Description=VDJServer Mongo
+Documentation=https://github.com/vdjserver/vdjserver-mongo
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker compose -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/mongodb/docker-compose.yml -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/mongodb/docker-compose.prod-override.yml up
+ExecStop=/usr/bin/docker compose -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/mongodb/docker-compose.yml -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/mongodb/docker-compose.prod-override.yml down
+
+[Install]
+WantedBy=multi-user.target
