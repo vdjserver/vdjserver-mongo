@@ -1,5 +1,5 @@
 FROM mongo:4
 
-#USER mongodb
-RUN usermod -u 184 mongodb
-RUN groupmod -g 1002 mongodb
+# map mongodb user to TACC vdj
+RUN usermod -u 816290 mongodb
+RUN groupmod -g 803419 mongodb
