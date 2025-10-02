@@ -8,6 +8,7 @@ services:
         user: mongodb:mongodb
         volumes:
             - /vdjZ/database/mongodata:/data/db
+            - /vdjZ/database/backup:/backup
 #            - ../../../data/repository/mongodb:/data/db
         networks:
             - v3_db
