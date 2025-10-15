@@ -20,7 +20,7 @@ services:
               "CMD",
               "mongo",
               "--quiet",
-              "127.0.0.1/v1vdj",
+              "127.0.0.1/v2vdj",
               "--eval",
               "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
             ]
