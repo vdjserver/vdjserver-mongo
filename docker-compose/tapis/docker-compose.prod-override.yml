@@ -1,0 +1,6 @@
+# VDJServer Docker Orchestration
+
+services:
+    vdj-tapis-mongo:
+        logging:
+            driver: "syslog"

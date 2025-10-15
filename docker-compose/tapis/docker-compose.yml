@@ -1,0 +1,35 @@
+# VDJServer Docker Orchestration
+
+services:
+    vdj-tapis-mongo:
+        build: ./../../mongodb
+        container_name: vdj-tapis-mongo
+        image: vdjserver/mongo:4
+        user: mongodb:mongodb
+        volumes:
+            - /vdjZ/database/tapisdb:/data/db
+            - /vdjZ/database/backup:/backup
+        networks:
+            - v3_tapis_db
+        command: mongod --noauth
+        ports:
+          - 27017:27017
+        healthcheck:
+          test:
+            [
+              "CMD",
+              "mongo",
+              "--quiet",
+              "127.0.0.1/v1vdj",
+              "--eval",
+              "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
+            ]
+          interval: 360s
+          timeout: 10s
+          retries: 5
+          start_period: 60s
+
+networks:
+    v3_tapis_db:
+        name: v3_tapis_db
+        driver: bridge
