@@ -6,7 +6,7 @@ Requires=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker compose -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapis/docker-compose.yml -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapisddocker-compose.prod-override.yml up
+ExecStart=/usr/bin/docker compose -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapis/docker-compose.yml -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapis/docker-compose.prod-override.yml up
 ExecStop=/usr/bin/docker compose -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapis/docker-compose.yml -f /var/www/docker/vdjserver/vdjserver-mongo/docker-compose/tapis/docker-compose.prod-override.yml down
 
 [Install]
